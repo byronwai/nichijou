@@ -85,7 +85,7 @@
       
         <p>幾經辛苦終於建立telegram bot！<br>由於好像無一篇文章可以好好整合server設置的steps，我決定寫一篇step to step go through一次。</p>
 <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h3><p>Telegram的好處太多，其中一項為支援用家寫bot去處理訊息，甚至可以寫<a href="https://storebot.me/bot/werewolfbot" target="_blank" rel="external">遊戲</a>。<br>從<a href="https://core.telegram.org/bots/api" target="_blank" rel="external">官方API</a>裡，我們得知bot處理訊息有兩種，<font color="red">setWebhook</font>跟<font color="red">getUpdates</font>，有興趣了解當中分別的可以參考<a href="http://www.hksilicon.com/articles/1087698" target="_blank" rel="external">這裡</a>。</p>
-<p>以下教學主要圍繞</p>
+<p>以下教學主要圍繞：</p>
 <ol>
 <li>https 設置</li>
 <li>setWebhook 的 online server設置</li>
@@ -100,12 +100,19 @@
 <p>當然如果你有錢買SSL的話，除第一項之外，其他東西是optional的。可是Let’s Encrypt的Free SSL是不管用的，Telegram要求的server要common name = domain name和<a href="https://core.telegram.org/bots/webhooks" target="_blank" rel="external">一些相對次要的要求</a>。關於CN要等於server domain的慘痛經歷，還是可以參考<a href="http://www.hksilicon.com/articles/1087698" target="_blank" rel="external">這裡</a>的。</p>
 <h3 id="2-申請Server"><a href="#2-申請Server" class="headerlink" title="2. 申請Server"></a>2. 申請Server</h3><p>坊間有不少免費server，可是建立telegram bot不可能掛在靜態伺服器之上，因此不可能使用GitHub原生網頁達成目的。<br><a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>跟<a href="https://www.000webhost.com/" target="_blank" rel="external">000webhost</a>等動態伺服器(i.e.即支援PHP的server)則可以掛載telegram bot。(注: 000webhost於2015年曾有<a href="http://www.forbes.com/sites/thomasbrewster/2015/10/28/000webhost-database-leak/#6623988b17c1" target="_blank" rel="external">密碼洩漏</a>的先例，使用000webhost與否就自行判斷。)<br>我自己使用的server則是<a href="https://infinityfree.net/" target="_blank" rel="external">InfinityFree</a>，不過與<a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>相比起來大同小異。反正要動態server就可。</p>
 <p>以下例子將使用<a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>進行，於其他server上建設也相類似。</p>
-<p><img src="/nichijou/images/20170119/server_01.png" alt=""></p>
+<ol>
+<li>當然是要申請server了，按指示一步一步做就可以。Sub Domain Name就是你希望的網址，一旦決定就不能再更改。不過稍後申請的Top-level Domain會跟現在的這個網址稍微不一樣，因此現在Sub Domain Name隨便寫一個就好。下圖作為例子：<br><img src="/nichijou/images/20170119/server_01.png" alt=""></li>
+</ol>
+<p>沒問題的話現在會看到這樣的一個網頁，提示你要登入自己的email account去做activation。email有機會會在spam裡面，沒收到email可以看一下垃圾郵件。<br><img src="/nichijou/images/20170119/server_02.png" alt=""><br><img src="/nichijou/images/20170119/server_03.png" alt=""></p>
+<p>Activation完成後會出現以下的一個網頁，請好好記下information，不見了的話我也不能幫你了。(笑)<br>(Homepage URL跟panel的information是最重要的，其他的可以從panel裡面找回來。)<br>Control panel的username跟password是用來login cpanel，作server side的調整。<br>FTP那部分是用來上傳你的網頁跟程式，有關內容不在本篇文章討論範圍內。<br>MySQL的那個也不作討論。(笑)<br><img src="/nichijou/images/20170119/server_04.png" alt=""></p>
+<p>現在打開自己的web page當然是空空如也。<br><img src="/nichijou/images/20170119/server_05.png" alt=""></p>
+<p>申請server的部分就到此結束。<br>到現在為止我們還沒有https，千萬不要先去申請SSL，因為CN要等於domain name，這樣就違背了最初的目的。<br>如果你只是想要server寫webpage，tutorial到這裡也就結束了。</p>
+<h3 id="3-申請Top-level-Domain"><a href="#3-申請Top-level-Domain" class="headerlink" title="3. 申請Top-level Domain"></a>3. 申請Top-level Domain</h3><p>為甚麼需要top-level domain呢，這是因為方便掛在<a href="https://www.cloudflare.com/" target="_blank" rel="external">Cloudflare</a>上而需要的。如果想要申請<a href="http://www.dot.tk/zu/index.html?lang=zu" target="_blank" rel="external">.tk</a>的domain，可以直接參考<a href="https://www.freehao123.com/tk/" target="_blank" rel="external">這裡</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" data-id="ciy59ctrm0001qsjpxm98inn0" class="article-share-link">Share</a>
+      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" data-id="ciy5ar7a60001ewjpa4dufk9k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/hello-world/" data-id="ciy59ctri0000qsjp339vrv9r" class="article-share-link">Share</a>
+      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/hello-world/" data-id="ciy5ar7a10000ewjpwm8ka8l7" class="article-share-link">Share</a>
       
       
     </footer>
