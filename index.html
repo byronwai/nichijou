@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://byronwai.github.io/nichijou"></form>
@@ -105,7 +105,7 @@
 <p>Activation完成後會出現以下的一個網頁，請好好記下information，不見了的話我也不能幫你了。(笑)<br>(Homepage URL跟panel的information是最重要的，其他的可以從panel裡面找回來。)<br>Control panel的username跟password是用來login cpanel，作server side的調整。<br>FTP那部分是用來上傳你的網頁跟程式，有關內容不在本篇文章討論範圍內。<br>MySQL的那個也不作討論。(笑)<br><img src="/nichijou/images/20170119/server_04.png" alt=""></p>
 <p>現在打開自己的web page當然是空空如也。<br><img src="/nichijou/images/20170119/server_05.png" alt=""></p>
 <p>申請server的部分就到此結束。<br>到現在為止我們還沒有https，千萬不要先去申請SSL，因為CN要等於domain name，這樣就違背了最初的目的。<br>如果你只是想要server寫webpage，tutorial到這裡也就結束了。</p>
-<h3 id="3-申請Top-level-Domain"><a href="#3-申請Top-level-Domain" class="headerlink" title="3. 申請Top-level Domain"></a>3. 申請Top-level Domain</h3><p>為甚麼需要top-level domain呢，這是因為方便掛在<a href="https://www.cloudflare.com/" target="_blank" rel="external">Cloudflare</a>上而需要的。如果想要申請<a href="http://www.dot.tk/zu/index.html?lang=zu" target="_blank" rel="external">.tk</a>的domain，可以直接參考<a href="https://www.freehao123.com/tk/" target="_blank" rel="external">這裡</a>。<br>我推薦的則是<a href="http://www.freenom.com/en/index.html" target="_blank" rel="external">Freenom</a>，只要能用就好。<br>到<a href="http://www.freenom.com/en/index.html" target="_blank" rel="external">Freenom</a>那裡去申請一個account，這邊就不作tutorial了。</p>
+<h3 id="3-申請Top-level-Domain"><a href="#3-申請Top-level-Domain" class="headerlink" title="3. 申請Top-level Domain"></a>3. 申請Top-level Domain</h3><p>為甚麼需要top-level domain呢，這是因為方便掛在<a href="https://www.cloudflare.com/" target="_blank" rel="external">Cloudflare</a>上而需要的。如果想要申請<a href="http://www.dot.tk/zu/index.html?lang=zu" target="_blank" rel="external">.tk</a>的domain，可以直接參考<a href="https://www.freehao123.com/tk/" target="_blank" rel="external">這裡</a>。<br>我推薦的則是<a href="http://www.freenom.com/en/index.html" target="_blank" rel="external">Freenom</a>，只要能用就好。<br>到<a href="http://www.freenom.com/en/index.html" target="_blank" rel="external">Freenom</a>那裡去申請一個account，這邊就不作tutorial了。<br>(注: Bytehost出於不知明原因，不容許 .tk 網域 park domain，因此我使用 .ga 網域)</p>
 <p>那麼我到<a href="http://www.freenom.com/en/index.html" target="_blank" rel="external">Freenom</a>上找找有沒有未被使用的domain。<br>(這邊的狀態是我已經login Freenom)<br><img src="/nichijou/images/20170119/domain_01.png" alt=""><br><img src="/nichijou/images/20170119/domain_02.png" alt=""></p>
 <p>Freenom可以提供1 - 12個月的free domain，未來需要每年再續domain。那我先用3個月free作一個demo。<br><img src="/nichijou/images/20170119/domain_03.png" alt=""></p>
 <p>先按continue，把domain name先申請下來再慢慢設置。再把資料填妥。<br><img src="/nichijou/images/20170119/domain_04.png" alt=""><br><img src="/nichijou/images/20170119/domain_05.png" alt=""></p>
@@ -116,11 +116,13 @@
 <p>找到後再到Manangement Tools，按一下Nameservers。<br><img src="/nichijou/images/20170119/park_04.png" alt=""></p>
 <p>接下來就要把domain的Nameserver轉到server上。(在我的例子就是轉到<a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>上。)<br>挑選Use custom nameservers，再把剛才記下的DNS server填上去。在圖片中我已經填好了。<br><img src="/nichijou/images/20170119/park_05.png" alt=""></p>
 <p>如果出現這個面頁就代表已經成功，等最多24hrs。我第一次掛上去的時候等了大概10分鐘就完成。<br><img src="/nichijou/images/20170119/park_06.png" alt=""></p>
+<p>然後就回去server，Parked Domain填上step 3申請的domain name。<br><img src="/nichijou/images/20170119/park_07.png" alt=""></p>
+<p>看到下面的面頁，就代表已經完成，準備去下一步。這個時候就要慢慢等了。<br><img src="/nichijou/images/20170119/park_08.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" data-id="ciy5f8ohl0001jgjpq4k60dgx" class="article-share-link">Delen</a>
+      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" data-id="ciy5g7st3000170jph5rd89dp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/hello-world/" data-id="ciy5f8ogy0000jgjpxe5xmzw0" class="article-share-link">Delen</a>
+      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/hello-world/" data-id="ciy5g7ssw000070jpkxtl5497" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +192,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/nichijou/archives/2017/01/">January 2017</a></li></ul>
     </div>
@@ -200,7 +202,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
