@@ -15,14 +15,14 @@
 <meta property="og:description" content="幾經辛苦終於建立telegram bot！由於好像無一篇文章可以好好整合server設置的steps，我決定寫一篇step to step go through一次。
 0. 前言Telegram的好處太多，其中一項為支援用家寫bot去處理訊息，甚至可以寫遊戲。從官方API裡，我們得知bot處理訊息有兩種，setWebhook跟getUpdates，有興趣了解當中分別的可以參考這裡。
 以下教學主要圍">
-<meta property="og:image" content="https://byronwai.github.io/nichijou/server_01.png">
-<meta property="og:updated_time" content="2017-01-20T03:14:42.496Z">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/server_01.png">
+<meta property="og:updated_time" content="2017-01-20T03:25:48.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[新手向] 免費Telegram bot 之 server前期設置">
 <meta name="twitter:description" content="幾經辛苦終於建立telegram bot！由於好像無一篇文章可以好好整合server設置的steps，我決定寫一篇step to step go through一次。
 0. 前言Telegram的好處太多，其中一項為支援用家寫bot去處理訊息，甚至可以寫遊戲。從官方API裡，我們得知bot處理訊息有兩種，setWebhook跟getUpdates，有興趣了解當中分別的可以參考這裡。
 以下教學主要圍">
-<meta name="twitter:image" content="https://byronwai.github.io/nichijou/server_01.png">
+<meta name="twitter:image" content="https://byronwai.github.io/nichijou/images/server_01.png">
   
     <link rel="alternate" href="/atom.xml" title="從零開始的編程生活" type="application/atom+xml">
   
@@ -60,9 +60,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://byronwai.github.io/nichijou"></form>
@@ -110,12 +110,12 @@
 <p>當然如果你有錢買SSL的話，除第一項之外，其他東西是optional的。可是Let’s Encrypt的Free SSL是不管用的，Telegram要求的server要common name = domain name和<a href="https://core.telegram.org/bots/webhooks" target="_blank" rel="external">一些相對次要的要求</a>。關於CN要等於server domain的慘痛經歷，還是可以參考<a href="http://www.hksilicon.com/articles/1087698" target="_blank" rel="external">這裡</a>的。</p>
 <h3 id="2-申請Server"><a href="#2-申請Server" class="headerlink" title="2. 申請Server"></a>2. 申請Server</h3><p>坊間有不少免費server，可是建立telegram bot不可能掛在靜態伺服器之上，因此不可能使用GitHub原生網頁達成目的。<br><a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>跟<a href="https://www.000webhost.com/" target="_blank" rel="external">000webhost</a>等動態伺服器(i.e.即支援PHP的server)則可以掛載telegram bot。(注: 000webhost於2015年曾有<a href="http://www.forbes.com/sites/thomasbrewster/2015/10/28/000webhost-database-leak/#6623988b17c1" target="_blank" rel="external">密碼洩漏</a>的先例，使用000webhost與否就自行判斷。)<br>我自己使用的server則是<a href="https://infinityfree.net/" target="_blank" rel="external">InfinityFree</a>，不過與<a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>相比起來大同小異。反正要動態server就可。</p>
 <p>以下例子將使用<a href="https://byet.host/" target="_blank" rel="external">Bytehost</a>進行，於其他server上建設也相類似。</p>
-<p><img src="/server_01.png" alt=""></p>
+<p><img src="/images/server_01.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" data-id="ciy58hz1s0001mkjp4igwmein" class="article-share-link">Delen</a>
+      <a data-url="https://byronwai.github.io/nichijou/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" data-id="ciy58uvw70001kwjpxtrzlek2" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -126,7 +126,7 @@
   
   
     <a href="/nichijou/2017/01/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -149,7 +149,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/nichijou/archives/2017/01/">January 2017</a></li></ul>
     </div>
@@ -159,7 +159,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -184,7 +184,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Byron Wai<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
