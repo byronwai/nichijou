@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="從零開始的編程生活">
 <meta property="og:description" content="前一段時間在弄 webpage design，用 Dreamweaver 弄好以後 Local 檢視完全未問題，可是放到 Server Side 就完全跑調了。仔細一看，發現 CSS 根本沒有套用上去啊。仔細 google 後，發現問題出在 CSS caching 上面。
 0. 正文我自己用的是 Byethost 跟 InfinityFree，結果發現 update 網頁後幾分鐘後，refresh">
-<meta property="og:updated_time" content="2017-04-14T11:19:48.675Z">
+<meta property="og:updated_time" content="2017-04-14T11:23:48.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[偽翻譯] Online Apache Server 上無法顯示 CSS">
 <meta name="twitter:description" content="前一段時間在弄 webpage design，用 Dreamweaver 弄好以後 Local 檢視完全未問題，可是放到 Server Side 就完全跑調了。仔細一看，發現 CSS 根本沒有套用上去啊。仔細 google 後，發現問題出在 CSS caching 上面。
@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://byronwai.github.io"></form>
@@ -91,7 +91,7 @@
         <p>前一段時間在弄 webpage design，用 Dreamweaver 弄好以後 Local 檢視完全未問題，可是放到 Server Side 就完全跑調了。仔細一看，發現 CSS 根本沒有套用上去啊。仔細 google 後，發現問題出在 CSS caching 上面。</p>
 <h3 id="0-正文"><a href="#0-正文" class="headerlink" title="0. 正文"></a>0. 正文</h3><p>我自己用的是 <a href="https://byet.host/" target="_blank" rel="external">Byethost</a> 跟 <a href="https://infinityfree.net/" target="_blank" rel="external">InfinityFree</a>，結果發現 update 網頁後幾分鐘後，refresh 依然沒有變化，原來是 server side 為了節省資源而先把 style sheet 進行 caching。</p>
 <a id="more"></a>
-<h3 id="1-解決辦法"><a href="#1-解決辦法" class="headerlink" title="1. 解決辦法"></a>1. 解決辦法</h3><p>我們把以下的 code 放在 HTML 的 &lt;<head>&gt; 之內，把 HTML 當作 PHP</head></p>
+<h3 id="1-解決辦法"><a href="#1-解決辦法" class="headerlink" title="1. 解決辦法"></a>1. 解決辦法</h3><p>我們把以下的 code 放在 HTML 的 “<head>“ 之內，把 HTML 當作 PHP</head></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"/path/to/your/stylesheet&lt;?php print('?'.filemtime('style.css'));?&gt;"</span>/&gt;</div></pre></td></tr></table></figure>
 <p>或直接 include 在 PHP 之內</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line"><span class="built_in">echo</span> <span class="string">'&lt;link rel="stylesheet" type="text/css" href="style.css?'</span> . filemtime(<span class="string">'style.css'</span>) . <span class="string">'" /&gt;'</span>; </div><div class="line">?&gt;</div></pre></td></tr></table></figure>
@@ -100,9 +100,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/" data-id="cj1hqs4730000x8jpr4y81kq7" class="article-share-link">Partager</a>
+      <a data-url="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/" data-id="cj1hqxau40000isjppcwwoaxq" class="article-share-link">Share</a>
       
-        <a href="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/#disqus_thread" class="article-comment-link">Commentaires</a>
+        <a href="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -113,7 +113,7 @@
   
   
     <a href="/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">[新手向] 免費Telegram bot 之 server前期設置</div>
     </a>
   
@@ -152,7 +152,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -181,7 +181,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Byron Wai<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
