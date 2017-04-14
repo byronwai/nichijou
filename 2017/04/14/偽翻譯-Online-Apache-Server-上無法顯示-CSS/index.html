@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="從零開始的編程生活">
 <meta property="og:description" content="前一段時間在弄 webpage design，用 Dreamweaver 弄好以後 Local 檢視完全未問題，可是放到 Server Side 就完全跑調了。仔細一看，發現 CSS 根本沒有套用上去啊。仔細 google 後，發現問題出在 CSS caching 上面。
 0. 正文我自己用的是 Byethost 跟 InfinityFree，結果發現 update 網頁後幾分鐘後，refresh">
-<meta property="og:updated_time" content="2017-04-14T11:23:48.052Z">
+<meta property="og:updated_time" content="2017-04-14T11:28:13.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[偽翻譯] Online Apache Server 上無法顯示 CSS">
 <meta name="twitter:description" content="前一段時間在弄 webpage design，用 Dreamweaver 弄好以後 Local 檢視完全未問題，可是放到 Server Side 就完全跑調了。仔細一看，發現 CSS 根本沒有套用上去啊。仔細 google 後，發現問題出在 CSS caching 上面。
@@ -92,15 +92,16 @@
 <h3 id="0-正文"><a href="#0-正文" class="headerlink" title="0. 正文"></a>0. 正文</h3><p>我自己用的是 <a href="https://byet.host/" target="_blank" rel="external">Byethost</a> 跟 <a href="https://infinityfree.net/" target="_blank" rel="external">InfinityFree</a>，結果發現 update 網頁後幾分鐘後，refresh 依然沒有變化，原來是 server side 為了節省資源而先把 style sheet 進行 caching。</p>
 <a id="more"></a>
 <h3 id="1-解決辦法"><a href="#1-解決辦法" class="headerlink" title="1. 解決辦法"></a>1. 解決辦法</h3><p>我們把以下的 code 放在 HTML 的 “<head>“ 之內，把 HTML 當作 PHP</head></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"/path/to/your/stylesheet&lt;?php print('?'.filemtime('style.css'));?&gt;"</span>/&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"/stylesheet/的/位置&lt;?php print('?'.filemtime('style.css'));?&gt;"</span>/&gt;</div></pre></td></tr></table></figure>
 <p>或直接 include 在 PHP 之內</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line"><span class="built_in">echo</span> <span class="string">'&lt;link rel="stylesheet" type="text/css" href="style.css?'</span> . filemtime(<span class="string">'style.css'</span>) . <span class="string">'" /&gt;'</span>; </div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<p><a href="http://www.hudl.net/subcsscache.php?sub=csscache&amp;i=2" target="_blank" rel="external">http://www.hudl.net/subcsscache.php?sub=csscache&amp;i=2</a></p>
+<p>這樣就可以騙過 server，認為你的 CSS style sheet 是 dynamic style sheet，每次 refresh broswer 都會自己載入一次啦。</p>
+<h3 id="2-Reference"><a href="#2-Reference" class="headerlink" title="2. Reference"></a>2. Reference</h3><p><a href="http://php.net/manual/en/function.filemtime.php" target="_blank" rel="external">http://php.net/manual/en/function.filemtime.php</a><br><a href="http://www.hudl.net/subcsscache.php?sub=csscache&amp;i=2" target="_blank" rel="external">http://www.hudl.net/subcsscache.php?sub=csscache&amp;i=2</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/" data-id="cj1hqxau40000isjppcwwoaxq" class="article-share-link">Share</a>
+      <a data-url="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/" data-id="cj1hr2wxj00012gjprhjhkyha" class="article-share-link">Share</a>
       
         <a href="https://byronwai.github.io/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/#disqus_thread" class="article-comment-link">Comments</a>
       
