@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>LDAP Setup | 從零開始的編程生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0. 前言由於server上要使用Windows login crediential來登入server，以此紀錄設定過程。參考MSDN卻ldap_bind failed，一氣之下寫下過程。OS: Windows 2012 R2PHP: IIS 8
+1. Enable Active Directory Domain Service到 Server Manager -&amp;gt; Tools -&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LDAP Setup">
+<meta property="og:url" content="https://byronwai.github.io/2018/09/30/LDAP setup/index.html">
+<meta property="og:site_name" content="從零開始的編程生活">
+<meta property="og:description" content="0. 前言由於server上要使用Windows login crediential來登入server，以此紀錄設定過程。參考MSDN卻ldap_bind failed，一氣之下寫下過程。OS: Windows 2012 R2PHP: IIS 8
+1. Enable Active Directory Domain Service到 Server Manager -&amp;gt; Tools -&amp;gt;">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image1.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image2.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image3.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image4.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image5.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image6.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image7.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image8.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image9.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image10.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image11.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image12.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image13.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image14.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image15.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image16.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image17.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image18.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image19.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image20.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image21.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image22.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image23.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image24.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image25.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image26.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image27.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image28.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image29.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image31.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image32.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image33.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image34.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image35.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image36.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image37.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image38.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image39.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image40.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image41.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image42.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image43.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image44.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image45.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image46.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image47.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image48.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image49.png">
+<meta property="og:image" content="https://byronwai.github.io/nichijou/images/20180930/image50.png">
+<meta property="og:updated_time" content="2018-09-30T13:50:23.317Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LDAP Setup">
+<meta name="twitter:description" content="0. 前言由於server上要使用Windows login crediential來登入server，以此紀錄設定過程。參考MSDN卻ldap_bind failed，一氣之下寫下過程。OS: Windows 2012 R2PHP: IIS 8
+1. Enable Active Directory Domain Service到 Server Manager -&amp;gt; Tools -&amp;gt;">
+<meta name="twitter:image" content="https://byronwai.github.io/nichijou/images/20180930/image1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="從零開始的編程生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/nichijou/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/nichijou/" id="logo">從零開始的編程生活</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/nichijou/">Home</a>
+        
+          <a class="main-nav-link" href="/nichijou/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://byronwai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LDAP setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/nichijou/2018/09/30/LDAP setup/" class="article-date">
+  <time datetime="2018-09-30T15:11:23.000Z" itemprop="datePublished">2018-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LDAP Setup
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h3><p>由於server上要使用Windows login crediential來登入server，以此紀錄設定過程。<br>參考<a href="https://blogs.msdn.microsoft.com/microsoftrservertigerteam/2017/04/10/step-by-step-guide-to-setup-ldaps-on-windows-server/" target="_blank" rel="external">MSDN</a>卻ldap_bind failed，一氣之下寫下過程。<br>OS: Windows 2012 R2<br>PHP: IIS 8</p>
+<h3 id="1-Enable-Active-Directory-Domain-Service"><a href="#1-Enable-Active-Directory-Domain-Service" class="headerlink" title="1. Enable Active Directory Domain Service"></a>1. Enable Active Directory Domain Service</h3><p>到 Server Manager -&gt; Tools -&gt; Add Roles and Features，按下圖enable Active Directory Domain Services就可。</p>
+<a id="more"></a>
+<p><img src="/nichijou/images/20180930/image1.png" alt=""><br><img src="/nichijou/images/20180930/image2.png" alt=""><br><img src="/nichijou/images/20180930/image3.png" alt=""><br><img src="/nichijou/images/20180930/image4.png" alt=""><br><img src="/nichijou/images/20180930/image5.png" alt=""><br><img src="/nichijou/images/20180930/image6.png" alt=""><br><img src="/nichijou/images/20180930/image7.png" alt=""><br><img src="/nichijou/images/20180930/image8.png" alt=""><br><img src="/nichijou/images/20180930/image9.png" alt=""><br><img src="/nichijou/images/20180930/image10.png" alt=""><br><img src="/nichijou/images/20180930/image11.png" alt=""></p>
+<p>AD DS安裝完成後回到Server Manager-&gt;AD DS進行設置，Click “More…”<br><img src="/nichijou/images/20180930/image12.png" alt=""></p>
+<p>接著按 “Promote this server to a domain…”<br><img src="/nichijou/images/20180930/image13.png" alt=""></p>
+<p>在此我選擇Add a new forent。<br>由於沒有domain name，我使用一個local domain name，稍後時間其他server DNS指回AD便可access domain<br><img src="/nichijou/images/20180930/image14.png" alt=""></p>
+<p>Server Version在此我選擇 Windows 2012 R2，請按照實際需要選擇。</p>
+<p><img src="/nichijou/images/20180930/image15.png" alt=""><br><img src="/nichijou/images/20180930/image16.png" alt=""><br><img src="/nichijou/images/20180930/image17.png" alt=""><br><img src="/nichijou/images/20180930/image18.png" alt=""><br><img src="/nichijou/images/20180930/image19.png" alt=""></p>
+<p>“View Script” 檢查設定</p>
+<p><img src="/nichijou/images/20180930/image20.png" alt=""></p>
+<p>如果Prerequest Check沒過的話，請按照提示修正</p>
+<p><img src="/nichijou/images/20180930/image21.png" alt=""><br><img src="/nichijou/images/20180930/image22.png" alt=""></p>
+<p>安裝完成後需要重新啟動</p>
+<p><img src="/nichijou/images/20180930/image23.png" alt=""></p>
+<p>重新登入後便可使用Domain Account登入</p>
+<p><img src="/nichijou/images/20180930/image24.png" alt=""></p>
+<h3 id="2-Add-New-User"><a href="#2-Add-New-User" class="headerlink" title="2. Add New User"></a>2. Add New User</h3><p>由於Domain上增加使用者方式與一般有差異，一並紀錄。</p>
+<p>Server Manager -&gt; Tools -&gt; Active Directory Users and Computers<br>如果沒有發現，可以參考<a href="https://social.technet.microsoft.com/Forums/windows/en-US/06b889c9-0c2b-4485-9d20-c5058de65a11/remote-server-administration-tools-for-windows-10-active-directory-users-and-computers-missing?forum=win10itprogeneral" target="_blank" rel="external">Microsoft的教學</a></p>
+<p>找到自己domain name後到Users，Right Click</p>
+<p><img src="/nichijou/images/20180930/image25.png" alt=""></p>
+<p>在此新增一個叫”sardine”的使用者，密碼為”Crack_me”，稍後進行LDAP bind測試。</p>
+<p><img src="/nichijou/images/20180930/image26.png" alt=""><br><img src="/nichijou/images/20180930/image27.png" alt=""><br><img src="/nichijou/images/20180930/image28.png" alt=""></p>
+<p>新增成功後看到使用者”sardine”</p>
+<p><img src="/nichijou/images/20180930/image29.png" alt=""></p>
+<h3 id="3-Enable-Active-Directory-Lightweight-Directory-Servives"><a href="#3-Enable-Active-Directory-Lightweight-Directory-Servives" class="headerlink" title="3. Enable Active Directory Lightweight Directory Servives"></a>3. Enable Active Directory Lightweight Directory Servives</h3><p>Server Manager -&gt; Tools -&gt; Add Roles and Features</p>
+<p><img src="/nichijou/images/20180930/image31.png" alt=""><br><img src="/nichijou/images/20180930/image32.png" alt=""><br><img src="/nichijou/images/20180930/image33.png" alt=""><br><img src="/nichijou/images/20180930/image34.png" alt=""><br><img src="/nichijou/images/20180930/image35.png" alt=""></p>
+<p>安裝完成後進行設置</p>
+<p><img src="/nichijou/images/20180930/image36.png" alt=""><br><img src="/nichijou/images/20180930/image37.png" alt=""></p>
+<p>Setup wizard稍後時間也可在Windows中找到</p>
+<p><img src="/nichijou/images/20180930/image38.png" alt=""><br><img src="/nichijou/images/20180930/image39.png" alt=""></p>
+<p>Instance name名字可以自己取耶<br>Port Number可以自己改，Default該是389，可是389被其他service占用，Windows自動配置Port 50000</p>
+<p><img src="/nichijou/images/20180930/image40.png" alt=""><br><img src="/nichijou/images/20180930/image41.png" alt=""></p>
+<p>Partition的配置我不太肯定，我自己的設定為CN=Instance, DN=Domain</p>
+<p><img src="/nichijou/images/20180930/image42.png" alt=""><br><img src="/nichijou/images/20180930/image43.png" alt=""></p>
+<p>繼續按Default配置</p>
+<p><img src="/nichijou/images/20180930/image44.png" alt=""><br><img src="/nichijou/images/20180930/image45.png" alt=""></p>
+<p>選擇所有LDFI</p>
+<p><img src="/nichijou/images/20180930/image46.png" alt=""></p>
+<p>Double Check</p>
+<p><img src="/nichijou/images/20180930/image47.png" alt=""></p>
+<p>Install</p>
+<p><img src="/nichijou/images/20180930/image48.png" alt=""><br><img src="/nichijou/images/20180930/image49.png" alt=""></p>
+<p>最後在自己host上掛上testing PHP script，在 <a href="http://php.net/manual/en/function.ldap-bind.php" target="_blank" rel="external">php.net</a> 上可以找到<br>PHP server setup我自己使用IIS，設置按下不表。</p>
+<p>測試成功</p>
+<p><img src="/nichijou/images/20180930/image50.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://byronwai.github.io/nichijou/2018/09/30/LDAP setup/" data-id="cjmox93ho0001eg7k7byufuxk" class="article-share-link">Поделиться</a>
+      
+        <a href="https://byronwai.github.io/nichijou/2018/09/30/LDAP setup/#disqus_thread" class="article-comment-link">Комментарии</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/nichijou/tags/AD/">AD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/nichijou/tags/LDAP/">LDAP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Предыдущий</strong>
+      <div class="article-nav-title">[偽翻譯] Online Apache Server 上無法顯示 CSS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Метки</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/nichijou/tags/AD/">AD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/nichijou/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/nichijou/tags/CSS-caching/">CSS caching</a></li><li class="tag-list-item"><a class="tag-list-link" href="/nichijou/tags/Cloudflare/">Cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/nichijou/tags/LDAP/">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/nichijou/tags/Telegram-bot/">Telegram bot</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Облако меток</h3>
+    <div class="widget tagcloud">
+      <a href="/nichijou/tags/AD/" style="font-size: 10px;">AD</a> <a href="/nichijou/tags/Apache/" style="font-size: 20px;">Apache</a> <a href="/nichijou/tags/CSS-caching/" style="font-size: 10px;">CSS caching</a> <a href="/nichijou/tags/Cloudflare/" style="font-size: 10px;">Cloudflare</a> <a href="/nichijou/tags/LDAP/" style="font-size: 10px;">LDAP</a> <a href="/nichijou/tags/Telegram-bot/" style="font-size: 10px;">Telegram bot</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Архив</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/nichijou/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/nichijou/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/nichijou/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Недавние записи</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/nichijou/2018/09/30/LDAP setup/">LDAP Setup</a>
+          </li>
+        
+          <li>
+            <a href="/nichijou/2017/04/14/偽翻譯-Online-Apache-Server-上無法顯示-CSS/">[偽翻譯] Online Apache Server 上無法顯示 CSS</a>
+          </li>
+        
+          <li>
+            <a href="/nichijou/2017/01/19/新手向-免費Telegram-bot-之-server前期設置-1/">[新手向] 免費Telegram bot 之 server前期設置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Byron Wai<br>
+      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/nichijou/" class="mobile-nav-link">Home</a>
+  
+    <a href="/nichijou/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'nichijou-github';
+  
+  var disqus_url = 'https://byronwai.github.io/nichijou/2018/09/30/LDAP setup/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/nichijou/fancybox/jquery.fancybox.css">
+  <script src="/nichijou/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/nichijou/js/script.js"></script>
+
+  </div>
+</body>
+</html>
